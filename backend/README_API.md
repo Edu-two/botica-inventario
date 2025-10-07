@@ -50,120 +50,16 @@ POST	/api/productos	Agregar un nuevo producto
 PUT	/api/productos/:id	Actualizar un producto existente
 DELETE	/api/productos/:id	Eliminar un producto
 
-🧪 Ejemplos para probar (Thunder Client o Postman)
-🔹 GET – Obtener productos
-bash
-Copiar código
-GET http://localhost:3001/api/productos
-Respuesta:
-
-json
-Copiar código
-[
-  {
-    "id": 1,
-    "nombre": "Paracetamol 500mg",
-    "categoria": "Medicamento",
-    "precio": 1.50,
-    "stock": 100
-  }
-]
-🔹 POST – Agregar producto
-bash
-Copiar código
-POST http://localhost:3001/api/productos
-Body (JSON):
-
-json
-Copiar código
-{
-  "nombre": "Ibuprofeno 400mg",
-  "categoria": "Medicamento",
-  "precio": 2.00,
-  "stock": 80
-}
-Respuesta:
-
-json
-Copiar código
-{
-  "message": "✅ Producto agregado correctamente",
-  "id": 2
-}
-🔹 PUT – Actualizar producto
-bash
-Copiar código
-PUT http://localhost:3001/api/productos/2
-Body (JSON):
-
-json
-Copiar código
-{
-  "nombre": "Ibuprofeno 400mg",
-  "categoria": "Analgésico",
-  "precio": 2.50,
-  "stock": 120
-}
-Respuesta:
-
-json
-Copiar código
-{
-  "message": "✅ Producto actualizado correctamente"
-}
-🔹 DELETE – Eliminar producto
-bash
-Copiar código
-DELETE http://localhost:3001/api/productos/2
-Respuesta:
-
-json
-Copiar código
-{
-  "message": "🗑️ Producto eliminado correctamente"
-}
-💬 Integración desde frontend (para Edgard)
-Ejemplo básico de consumo con fetch en JavaScript:
-
-js
-Copiar código
-// Obtener todos los productos
-fetch("http://localhost:3001/api/productos")
-  .then(res => res.json())
-  .then(data => console.log("Productos:", data));
-
-// Agregar un producto
-fetch("http://localhost:3001/api/productos", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    nombre: "Amoxicilina 500mg",
-    categoria: "Antibiótico",
-    precio: 3.5,
-    stock: 60
-  })
-})
-  .then(res => res.json())
-  .then(data => console.log("Respuesta:", data));
-🧾 Autor y colaborador
-Backend: Brayan Leyva Gutiérrez
-
-Integración API / Frontend: Edgard Huayhua
-
-Proyecto: Botica “Nova Salud”
-
-Curso: Fullstack Developer Software – SENATI
-
-yaml
-Copiar código
-
 ---
 
-## 🚀 Después de guardarlo
-1. Guarda el archivo como `README_API.md` en `/backend`.
-2. Luego súbelo a tu rama:
+## 💰 Endpoints de Ventas
 
-```bash
-git add README_API.md
-git commit -m "Agregado README_API con documentación de endpoints"
-git push origin bryan-backend
+| Método | Ruta | Descripción |
+|---------|------|-------------|
+| GET | `/api/ventas` | Listar todas las ventas |
+| POST | `/api/ventas` | Registrar nueva venta |
+| PUT | `/api/ventas/:id` | Actualizar una venta |
+| DELETE | `/api/ventas/:id` | Eliminar una venta |
+
+
+

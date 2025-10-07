@@ -1,11 +1,10 @@
 const mysql = require("mysql2");
-require("dotenv").config();
 
 const db = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "botica_db"
 });
 
 db.connect((err) => {
@@ -13,7 +12,7 @@ db.connect((err) => {
     console.error("❌ Error al conectar con MySQL:", err);
     return;
   }
-  console.log("✅ Conexión MySQL establecida correctamente");
+  console.log("✅ Conexión MySQL lista desde db.js");
 });
 
 module.exports = db;
