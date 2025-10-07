@@ -6,6 +6,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const usuarioRoutes = require("./routes/usuarioRoutes");
+app.use("/api/usuarios", usuarioRoutes);
+
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
