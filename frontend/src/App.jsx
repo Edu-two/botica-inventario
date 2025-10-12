@@ -7,6 +7,8 @@ import Dashboard from '@/pages/Dashboard.jsx'
 import Products from '@/pages/Products.jsx'
 import Sales from '@/pages/Sales.jsx'
 import Clients from '@/pages/Clients.jsx'
+import Users from '@/pages/Users.jsx'
+import RequireRole from '@/components/RequireRole.jsx'
 import NotFound from '@/pages/NotFound.jsx'
 
 function Shell({ children }){
@@ -33,6 +35,8 @@ function Shell({ children }){
   )
 }
 
+function UsersPage(){ return <div className="card"><h3>Gestión de usuarios (admin)</h3><p>Conéctalo a /api/usuarios si quieres.</p></div> }
+
 function PrivateRoute({ children }){
   const { token } = useAuth()
   if(!token){
@@ -52,6 +56,19 @@ export default function App(){
           <Route path="/productos" element={<PrivateRoute><Products/></PrivateRoute>} />
           <Route path="/ventas" element={<PrivateRoute><Sales/></PrivateRoute>} />
           <Route path="/clientes" element={<PrivateRoute><Clients/></PrivateRoute>} />
+
+          {/* Solo admin */}
+          <Route
+            path="/usuarios"
+            element={
+              <PrivateRoute>
+                <RequireRole roles={['admin']}>
+                  <Users/>
+                </RequireRole>
+              </PrivateRoute>
+            }
+          />
+
           <Route path="*" element={<NotFound/>} />
         </Routes>
       </Shell>

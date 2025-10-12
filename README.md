@@ -9,8 +9,7 @@ Stack: **Frontend** (React + Vite) · **Backend** (Node.js + Express) · **DB** 
 
 ## 🗂 Estructura
 
-```
-.
+```.
 ├── backend/     # API REST (Express + MySQL)
 ├── frontend/    # SPA (React + Vite)
 ├── database/    # SQLs (opcional: schema/seed)
