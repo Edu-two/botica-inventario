@@ -24,23 +24,16 @@ CREATE TABLE IF NOT EXISTS productos (
   fecha_vencimiento DATE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE IF NOT EXISTS clientes (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  nombre VARCHAR(150),
-  documento VARCHAR(20) UNIQUE,
-  telefono VARCHAR(30),
-  email VARCHAR(120),
-  puntos_fidelidad INT DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 CREATE TABLE IF NOT EXISTS ventas (
   id INT AUTO_INCREMENT PRIMARY KEY,
   fecha DATETIME,
   total DECIMAL(10,2),
   id_usuario INT,
-  id_cliente INT NULL,
-  CONSTRAINT fk_ventas_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id),
-  CONSTRAINT fk_ventas_cliente FOREIGN KEY (id_cliente) REFERENCES clientes(id)
+  dni VARCHAR(8),
+  nombre_cliente VARCHAR(150),
+  telefono VARCHAR(20),
+  email VARCHAR(120),
+  CONSTRAINT fk_ventas_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE IF NOT EXISTS detalle_venta (
@@ -65,8 +58,3 @@ INSERT INTO productos (nombre, descripcion, precio, stock, categoria, fecha_venc
 ('Amoxicilina 500mg', 'Antibiotico', 3.20, 12, 'Antibiotico', DATE_ADD(CURDATE(), INTERVAL 120 DAY)),
 ('Omeprazol 20mg', 'Gastritis', 1.50, 8, 'Gastro', DATE_ADD(CURDATE(), INTERVAL 200 DAY)),
 ('Loratadina 10mg', 'Antihistaminico', 1.20, 60, 'Alergia', DATE_ADD(CURDATE(), INTERVAL 400 DAY));
-
--- Seed one client
-INSERT INTO clientes (nombre, documento, telefono, email) VALUES
-('Cliente Frecuente', '12345678', '999-111-222', 'cliente@demo.com')
-ON DUPLICATE KEY UPDATE documento=VALUES(documento);

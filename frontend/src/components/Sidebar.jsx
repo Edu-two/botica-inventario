@@ -12,7 +12,7 @@ export default function Sidebar(){
         📦 Productos {user?.rol === 'empleado' && <span className="badge warn" style={{marginLeft:8}}>solo lectura</span>}
       </NavLink>
       <NavLink to="/ventas" className={({isActive})=> isActive ? 'active' : ''}>🧾 Ventas</NavLink>
-      <NavLink to="/clientes" className={({isActive})=> isActive ? 'active' : ''}>👥 Clientes</NavLink>
+      <NavLink to="/clientes" className={({isActive})=> isActive ? 'active' : ''}>🧾 Boletas</NavLink>
 
       {isAdmin && (
         <NavLink to="/usuarios" className={({isActive})=> isActive ? 'active' : ''}>🛡️ Usuarios</NavLink>

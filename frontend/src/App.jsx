@@ -34,7 +34,6 @@ function Shell({ children }){
     </div>
   )
 }
-
 function UsersPage(){ return <div className="card"><h3>Gestión de usuarios (admin)</h3><p>Conéctalo a /api/usuarios si quieres.</p></div> }
 
 function PrivateRoute({ children }){
@@ -44,7 +43,6 @@ function PrivateRoute({ children }){
   }
   return children
 }
-
 export default function App(){
   return (
     <AuthProvider>

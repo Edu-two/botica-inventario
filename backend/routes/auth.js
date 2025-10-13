@@ -1,9 +1,7 @@
 import { Router } from 'express'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-
 const router = Router()
-
 router.post('/login', async (req, res) => {
   const { email, username, password } = req.body || {}
   if(!password || (!email && !username)){
@@ -20,7 +18,6 @@ router.post('/login', async (req, res) => {
   const token = jwt.sign({ id:user.id, nombre:user.nombre, email:user.email, rol:user.rol }, process.env.JWT_SECRET || 'dev_secret_123', { expiresIn:'8h' })
   res.json({ token })
 })
-
 router.get('/profile', (req,res)=>{
   const auth = req.headers.authorization || ''
   const token = auth.startsWith('Bearer ') ? auth.slice(7) : null
@@ -32,5 +29,4 @@ router.get('/profile', (req,res)=>{
     res.json({ nombre:'Usuario', rol:'empleado' })
   }
 })
-
 export default router
